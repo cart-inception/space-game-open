@@ -78,6 +78,10 @@ export class CameraController {
   public setZoomSpeed(speed: number): void {
     this.zoomSpeed = speed;
   }
+  
+  public getCamera(): THREE.PerspectiveCamera {
+    return this.camera;
+  }
 
   private setupEventListeners(): void {
     // Pointer lock events

@@ -1,0 +1,587 @@
+{
+  "bodies": [
+    {
+      "id": "sun",
+      "name": "Sun",
+      "type": "star",
+      "mass": 1.989e30,
+      "radius": 696340000,
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 1
+      },
+      "orbitalElements": {
+        "semiMajorAxis": 0,
+        "eccentricity": 0,
+        "inclination": 0,
+        "ascendingNode": 0,
+        "argumentOfPeriapsis": 0,
+        "meanAnomalyAtEpoch": 0,
+        "period": 0
+      },
+      "texturePath": "/textures/sun.jpg"
+    },
+    {
+      "id": "mercury",
+      "name": "Mercury",
+      "type": "planet",
+      "mass": 3.301e23,
+      "radius": 2439700,
+      "position": {
+        "x": 57909050000,
+        "y": 0,
+        "z": 0
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 1
+      },
+      "orbitalElements": {
+        "semiMajorAxis": 57909050000,
+        "eccentricity": 0.2056,
+        "inclination": 0.1223,
+        "ascendingNode": 0.8427,
+        "argumentOfPeriapsis": 1.351,
+        "meanAnomalyAtEpoch": 2.639,
+        "period": 7600520
+      },
+      "texturePath": "/textures/mercury.jpg"
+    },
+    {
+      "id": "venus",
+      "name": "Venus",
+      "type": "planet",
+      "mass": 4.867e24,
+      "radius": 6051800,
+      "position": {
+        "x": 108208000000,
+        "y": 0,
+        "z": 0
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 1
+      },
+      "orbitalElements": {
+        "semiMajorAxis": 108208000000,
+        "eccentricity": 0.0067,
+        "inclination": 0.0592,
+        "ascendingNode": 1.338,
+        "argumentOfPeriapsis": 0.949,
+        "meanAnomalyAtEpoch": 2.868,
+        "period": 19414170
+      },
+      "atmosphere": {
+        "height": 250000,
+        "densityAtSeaLevel": 65,
+        "scaleHeight": 15850,
+        "composition": ["Carbon Dioxide", "Nitrogen"]
+      },
+      "texturePath": "/textures/venus.jpg"
+    },
+    {
+      "id": "earth",
+      "name": "Earth",
+      "type": "planet",
+      "mass": 5.972e24,
+      "radius": 6371000,
+      "position": {
+        "x": 149597870700,
+        "y": 0,
+        "z": 0
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 1
+      },
+      "orbitalElements": {
+        "semiMajorAxis": 149597870700,
+        "eccentricity": 0.0167,
+        "inclination": 0,
+        "ascendingNode": 0,
+        "argumentOfPeriapsis": 1.796,
+        "meanAnomalyAtEpoch": 1.796,
+        "period": 31557600
+      },
+      "atmosphere": {
+        "height": 100000,
+        "densityAtSeaLevel": 1.225,
+        "scaleHeight": 8500,
+        "composition": ["Nitrogen", "Oxygen", "Argon", "Carbon Dioxide"]
+      },
+      "biomes": [
+        {
+          "name": "Ocean",
+          "temperature": 288,
+          "pressure": 101325,
+          "color": "#006994",
+          "resources": ["Water", "Salt"]
+        },
+        {
+          "name": "Desert",
+          "temperature": 320,
+          "pressure": 101325,
+          "color": "#C19A6B",
+          "resources": ["Silicon", "Iron"]
+        },
+        {
+          "name": "Grassland",
+          "temperature": 285,
+          "pressure": 101325,
+          "color": "#7CFC00",
+          "resources": ["Water", "Organic Compounds"]
+        },
+        {
+          "name": "Tundra",
+          "temperature": 260,
+          "pressure": 101325,
+          "color": "#A8B08F",
+          "resources": ["Water", "Minerals"]
+        }
+      ],
+      "texturePath": "/textures/earth.jpg"
+    },
+    {
+      "id": "moon",
+      "name": "Moon",
+      "type": "moon",
+      "mass": 7.342e22,
+      "radius": 1737400,
+      "position": {
+        "x": 384400000,
+        "y": 0,
+        "z": 0
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 1
+      },
+      "orbitalElements": {
+        "semiMajorAxis": 384400000,
+        "eccentricity": 0.0549,
+        "inclination": 0.0898,
+        "ascendingNode": 0,
+        "argumentOfPeriapsis": 0,
+        "meanAnomalyAtEpoch": 0,
+        "period": 2360590
+      },
+      "parentBody": "earth",
+      "texturePath": "/textures/moon.jpg"
+    },
+    {
+      "id": "mars",
+      "name": "Mars",
+      "type": "planet",
+      "mass": 6.417e23,
+      "radius": 3389500,
+      "position": {
+        "x": 227939200000,
+        "y": 0,
+        "z": 0
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 1
+      },
+      "orbitalElements": {
+        "semiMajorAxis": 227939200000,
+        "eccentricity": 0.0935,
+        "inclination": 0.0323,
+        "ascendingNode": 0.866,
+        "argumentOfPeriapsis": 1.639,
+        "meanAnomalyAtEpoch": 0.899,
+        "period": 59354030
+      },
+      "atmosphere": {
+        "height": 11000,
+        "densityAtSeaLevel": 0.020,
+        "scaleHeight": 11100,
+        "composition": ["Carbon Dioxide", "Nitrogen", "Argon"]
+      },
+      "biomes": [
+        {
+          "name": "Polar Ice Cap",
+          "temperature": 160,
+          "pressure": 600,
+          "color": "#F0F8FF",
+          "resources": ["Water Ice", "Carbon Dioxide Ice"]
+        },
+        {
+          "name": "Canyon",
+          "temperature": 210,
+          "pressure": 700,
+          "color": "#8B4513",
+          "resources": ["Iron Oxide", "Minerals"]
+        },
+        {
+          "name": "Crater",
+          "temperature": 200,
+          "pressure": 610,
+          "color": "#CD853F",
+          "resources": ["Iron Oxide", "Silicon"]
+        }
+      ],
+      "texturePath": "/textures/mars.jpg"
+    },
+    {
+      "id": "jupiter",
+      "name": "Jupiter",
+      "type": "planet",
+      "mass": 1.898e27,
+      "radius": 69911000,
+      "position": {
+        "x": 778299000000,
+        "y": 0,
+        "z": 0
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 1
+      },
+      "orbitalElements": {
+        "semiMajorAxis": 778299000000,
+        "eccentricity": 0.0489,
+        "inclination": 0.0227,
+        "ascendingNode": 1.757,
+        "argumentOfPeriapsis": 5.067,
+        "meanAnomalyAtEpoch": 0.725,
+        "period": 374335770
+      },
+      "atmosphere": {
+        "height": 1000000,
+        "densityAtSeaLevel": 0.16,
+        "scaleHeight": 27000,
+        "composition": ["Hydrogen", "Helium"]
+      },
+      "texturePath": "/textures/jupiter.jpg"
+    },
+    {
+      "id": "io",
+      "name": "Io",
+      "type": "moon",
+      "mass": 8.932e22,
+      "radius": 1821600,
+      "position": {
+        "x": 421800000,
+        "y": 0,
+        "z": 0
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 1
+      },
+      "orbitalElements": {
+        "semiMajorAxis": 421800000,
+        "eccentricity": 0.0041,
+        "inclination": 0.0506,
+        "ascendingNode": 0,
+        "argumentOfPeriapsis": 0,
+        "meanAnomalyAtEpoch": 0,
+        "period": 1528400
+      },
+      "parentBody": "jupiter",
+      "texturePath": "/textures/io.jpg"
+    },
+    {
+      "id": "europa",
+      "name": "Europa",
+      "type": "moon",
+      "mass": 4.800e22,
+      "radius": 1560800,
+      "position": {
+        "x": 671100000,
+        "y": 0,
+        "z": 0
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 1
+      },
+      "orbitalElements": {
+        "semiMajorAxis": 671100000,
+        "eccentricity": 0.0094,
+        "inclination": 0.0472,
+        "ascendingNode": 0,
+        "argumentOfPeriapsis": 0,
+        "meanAnomalyAtEpoch": 0,
+        "period": 3068600
+      },
+      "parentBody": "jupiter",
+      "texturePath": "/textures/europa.jpg"
+    },
+    {
+      "id": "ganymede",
+      "name": "Ganymede",
+      "type": "moon",
+      "mass": 1.482e23,
+      "radius": 2634100,
+      "position": {
+        "x": 1070400000,
+        "y": 0,
+        "z": 0
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 1
+      },
+      "orbitalElements": {
+        "semiMajorAxis": 1070400000,
+        "eccentricity": 0.0013,
+        "inclination": 0.1815,
+        "ascendingNode": 0,
+        "argumentOfPeriapsis": 0,
+        "meanAnomalyAtEpoch": 0,
+        "period": 6181900
+      },
+      "parentBody": "jupiter",
+      "texturePath": "/textures/ganymede.jpg"
+    },
+    {
+      "id": "callisto",
+      "name": "Callisto",
+      "type": "moon",
+      "mass": 1.076e23,
+      "radius": 2410300,
+      "position": {
+        "x": 1882700000,
+        "y": 0,
+        "z": 0
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 1
+      },
+      "orbitalElements": {
+        "semiMajorAxis": 1882700000,
+        "eccentricity": 0.0074,
+        "inclination": 0.1921,
+        "ascendingNode": 0,
+        "argumentOfPeriapsis": 0,
+        "meanAnomalyAtEpoch": 0,
+        "period": 14420000
+      },
+      "parentBody": "jupiter",
+      "texturePath": "/textures/callisto.jpg"
+    },
+    {
+      "id": "saturn",
+      "name": "Saturn",
+      "type": "planet",
+      "mass": 5.683e26,
+      "radius": 58232000,
+      "position": {
+        "x": 1426666420000,
+        "y": 0,
+        "z": 0
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 1
+      },
+      "orbitalElements": {
+        "semiMajorAxis": 1426666420000,
+        "eccentricity": 0.0565,
+        "inclination": 0.0439,
+        "ascendingNode": 2.494,
+        "argumentOfPeriapsis": 1.976,
+        "meanAnomalyAtEpoch": 1.096,
+        "period": 929537200
+      },
+      "atmosphere": {
+        "height": 1000000,
+        "densityAtSeaLevel": 0.19,
+        "scaleHeight": 59500,
+        "composition": ["Hydrogen", "Helium"]
+      },
+      "texturePath": "/textures/saturn.jpg"
+    },
+    {
+      "id": "titan",
+      "name": "Titan",
+      "type": "moon",
+      "mass": 1.345e23,
+      "radius": 2574700,
+      "position": {
+        "x": 1221870000,
+        "y": 0,
+        "z": 0
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 1
+      },
+      "orbitalElements": {
+        "semiMajorAxis": 1221870000,
+        "eccentricity": 0.0288,
+        "inclination": 0.3349,
+        "ascendingNode": 0,
+        "argumentOfPeriapsis": 0,
+        "meanAnomalyAtEpoch": 0,
+        "period": 13776500
+      },
+      "atmosphere": {
+        "height": 600000,
+        "densityAtSeaLevel": 5.3,
+        "scaleHeight": 44000,
+        "composition": ["Nitrogen", "Methane"]
+      },
+      "parentBody": "saturn",
+      "texturePath": "/textures/titan.jpg"
+    },
+    {
+      "id": "uranus",
+      "name": "Uranus",
+      "type": "planet",
+      "mass": 8.681e25,
+      "radius": 25362000,
+      "position": {
+        "x": 2870658180000,
+        "y": 0,
+        "z": 0
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 1
+      },
+      "orbitalElements": {
+        "semiMajorAxis": 2870658180000,
+        "eccentricity": 0.0457,
+        "inclination": 0.0130,
+        "ascendingNode": 0.773,
+        "argumentOfPeriapsis": 2.986,
+        "meanAnomalyAtEpoch": 5.464,
+        "period": 2650461900
+      },
+      "atmosphere": {
+        "height": 1000000,
+        "densityAtSeaLevel": 0.23,
+        "scaleHeight": 27000,
+        "composition": ["Hydrogen", "Helium", "Methane"]
+      },
+      "texturePath": "/textures/uranus.jpg"
+    },
+    {
+      "id": "neptune",
+      "name": "Neptune",
+      "type": "planet",
+      "mass": 1.024e26,
+      "radius": 24622000,
+      "position": {
+        "x": 4498396440000,
+        "y": 0,
+        "z": 0
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 1
+      },
+      "orbitalElements": {
+        "semiMajorAxis": 4498396440000,
+        "eccentricity": 0.0113,
+        "inclination": 0.0308,
+        "ascendingNode": 1.770,
+        "argumentOfPeriapsis": 5.311,
+        "meanAnomalyAtEpoch": 5.368,
+        "period": 5200418600
+      },
+      "atmosphere": {
+        "height": 1000000,
+        "densityAtSeaLevel": 0.20,
+        "scaleHeight": 20000,
+        "composition": ["Hydrogen", "Helium", "Methane"]
+      },
+      "texturePath": "/textures/neptune.jpg"
+    },
+    {
+      "id": "ceres",
+      "name": "Ceres",
+      "type": "asteroid",
+      "mass": 9.393e20,
+      "radius": 473000,
+      "position": {
+        "x": 413690000000,
+        "y": 0,
+        "z": 0
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 1
+      },
+      "orbitalElements": {
+        "semiMajorAxis": 413690000000,
+        "eccentricity": 0.0758,
+        "inclination": 0.1864,
+        "ascendingNode": 1.197,
+        "argumentOfPeriapsis": 2.966,
+        "meanAnomalyAtEpoch": 5.581,
+        "period": 1453940000
+      },
+      "texturePath": "/textures/ceres.jpg"
+    },
+    {
+      "id": "vesta",
+      "name": "Vesta",
+      "type": "asteroid",
+      "mass": 2.590e20,
+      "radius": 262700,
+      "position": {
+        "x": 353360000000,
+        "y": 0,
+        "z": 0
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 1
+      },
+      "orbitalElements": {
+        "semiMajorAxis": 353360000000,
+        "eccentricity": 0.0890,
+        "inclination": 0.1230,
+        "ascendingNode": 0.279,
+        "argumentOfPeriapsis": 2.330,
+        "meanAnomalyAtEpoch": 5.362,
+        "period": 1325750000
+      },
+      "texturePath": "/textures/vesta.jpg"
+    }
+  ]
+}

@@ -1,4 +1,9 @@
 import { GraphicsEngine } from './graphics-engine.js';
+import { TimeManager } from './time-manager.js';
+import { CelestialBodiesManager } from './celestial-bodies-manager.js';
+import { CameraController } from './camera-controller.js';
+import { InputManager } from './input-manager.js';
+import { SpaceUI } from '../components/space-ui.js';
 
 export type SceneType = 'main-menu' | 'main-game' | 'settings' | 'loading';
 
@@ -96,19 +101,88 @@ class MainMenuScene implements Scene {
 
 class MainGameScene implements Scene {
   name: SceneType = 'main-game';
+  
+  private timeManager: TimeManager | null = null;
+  private celestialBodiesManager: CelestialBodiesManager | null = null;
+  private cameraController: CameraController | null = null;
+  private inputManager: InputManager | null = null;
+  private spaceUI: SpaceUI | null = null;
 
-  init(_graphicsEngine: GraphicsEngine): void {
+  init(graphicsEngine: GraphicsEngine): void {
     // Initialize main game scene
     console.log('Main game scene initialized');
+    
+    // Create input manager
+    this.inputManager = new InputManager();
+    this.inputManager.init();
+    
+    // Create time manager
+    this.timeManager = new TimeManager();
+    
+    // Create camera controller
+    this.cameraController = new CameraController(
+      graphicsEngine.getCamera(),
+      this.inputManager,
+      graphicsEngine.getRenderer().domElement
+    );
+    
+    // Create celestial bodies manager
+    this.celestialBodiesManager = new CelestialBodiesManager(this.timeManager);
+    this.celestialBodiesManager.init(graphicsEngine.getScene(), graphicsEngine.getCamera());
+    
+    // Load solar system data
+    this.celestialBodiesManager.loadFromFile('/src/data/solar-system.json').then(() => {
+      console.log('Solar system loaded successfully');
+    }).catch(error => {
+      console.error('Failed to load solar system:', error);
+    });
+    
+    // Create UI
+    this.spaceUI = new SpaceUI(
+      this.timeManager,
+      this.celestialBodiesManager,
+      this.cameraController
+    );
   }
 
-  update(_deltaTime: number): void {
-    // Update main game scene
+  update(deltaTime: number): void {
+    // Update input manager
+    if (this.inputManager) {
+      this.inputManager.update();
+    }
+    
+    // Update camera controller
+    if (this.cameraController) {
+      this.cameraController.update(deltaTime);
+    }
+    
+    // Update celestial bodies
+    if (this.celestialBodiesManager) {
+      this.celestialBodiesManager.update(deltaTime);
+    }
+    
+    // Update UI
+    if (this.spaceUI) {
+      this.spaceUI.update();
+    }
   }
 
   destroy(): void {
     // Clean up main game scene
     console.log('Main game scene destroyed');
+    
+    // Dispose of celestial bodies
+    if (this.celestialBodiesManager) {
+      this.celestialBodiesManager.dispose();
+    }
+    
+    // Dispose of UI
+    if (this.spaceUI) {
+      this.spaceUI.dispose();
+    }
+    
+    // Clean up input manager
+    // Note: InputManager doesn't have a dispose method yet
   }
 }
 
