@@ -64,23 +64,23 @@
 
 ## Phase 3: Physics System
 
-- [ ] Integrate Physics Engine
-  - [ ] Choose between Cannon.js or Ammo.js based on needs
-  - [ ] Set up physics world with appropriate parameters
-  - [ ] Implement gravity calculations for multiple bodies
-  - [ ] Create collision detection system
+- [x] Integrate Physics Engine
+  - [x] Choose between Cannon.js or Ammo.js based on needs
+  - [x] Set up physics world with appropriate parameters
+  - [x] Implement gravity calculations for multiple bodies
+  - [x] Create collision detection system
 
-- [ ] Implement N-Body Gravity Simulation
-  - [ ] Create GravitySystem class
-  - [ ] Implement gravity calculation at specific points
-  - [ ] Implement orbit updates based on gravity
-  - [ ] Implement trajectory prediction
+- [x] Implement N-Body Gravity Simulation
+  - [x] Create GravitySystem class
+  - [x] Implement gravity calculation at specific points
+  - [x] Implement orbit updates based on gravity
+  - [x] Implement trajectory prediction
 
-- [ ] Implement Atmospheric Physics
-  - [ ] Create atmospheric density model based on altitude
-  - [ ] Implement drag calculations based on velocity and density
-  - [ ] Add heating effects for high-speed atmospheric entry
-  - [ ] Implement aerodynamic forces for vehicles with aerodynamic surfaces
+- [x] Implement Atmospheric Physics
+  - [x] Create atmospheric density model based on altitude
+  - [x] Implement drag calculations based on velocity and density
+  - [x] Add heating effects for high-speed atmospheric entry
+  - [x] Implement aerodynamic forces for vehicles with aerodynamic surfaces
 
 ## Phase 4: Vehicle System
 
