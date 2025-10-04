@@ -1,4 +1,3 @@
-import * as THREE from 'three';
 import { TimeManager, TimeScale } from '../systems/time-manager.js';
 import { CelestialBodiesManager } from '../systems/celestial-bodies-manager.js';
 import { CameraController } from '../systems/camera-controller.js';
