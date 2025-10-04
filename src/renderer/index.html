@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Space Simulation Game</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+          Arial, sans-serif;
+        background-color: #000;
+        color: #fff;
+      }
+
+      #app {
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+      }
+
+      #canvas {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+
+      #ui-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 10;
+      }
+
+      #debug-info {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 10px;
+        border-radius: 5px;
+        font-family: monospace;
+        font-size: 14px;
+        pointer-events: auto;
+      }
+
+      #main-menu {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        pointer-events: auto;
+      }
+
+      .menu-button {
+        display: block;
+        margin: 10px auto;
+        padding: 10px 20px;
+        background-color: rgba(40, 40, 40, 0.8);
+        border: 1px solid #555;
+        color: #fff;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: background-color 0.2s;
+      }
+
+      .menu-button:hover {
+        background-color: rgba(60, 60, 60, 0.8);
+      }
+
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="canvas"></canvas>
+      <div id="ui-overlay">
+        <div id="debug-info" class="hidden">
+          <div>FPS: <span id="fps">0</span></div>
+          <div>Frame Time: <span id="frame-time">0</span>ms</div>
+          <div>Draw Calls: <span id="draw-calls">0</span></div>
+          <div>Triangles: <span id="triangles">0</span></div>
+        </div>
+        <div id="main-menu">
+          <h1>Space Simulation Game</h1>
+          <button id="new-game-btn" class="menu-button">New Game</button>
+          <button id="load-game-btn" class="menu-button">Load Game</button>
+          <button id="settings-btn" class="menu-button">Settings</button>
+          <button id="quit-btn" class="menu-button">Quit</button>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>
