@@ -1,0 +1,484 @@
+{
+  "parts": [
+    {
+      "id": "mk1-command-pod",
+      "name": "Mk1 Command Pod",
+      "description": "A basic single-person command pod for short missions",
+      "manufacturer": "Rockomax",
+      "category": "command",
+      "mass": 840,
+      "cost": 600,
+      "crewCapacity": 1,
+      "hasIVA": true,
+      "electricityStorage": 50,
+      "torqueStrength": { "x": 5, "y": 5, "z": 5 },
+      "position": { "x": 0, "y": 0, "z": 0 },
+      "rotation": { "x": 0, "y": 0, "z": 0, "w": 1 },
+      "attachPoints": [
+        {
+          "id": "top",
+          "position": { "x": 0, "y": 0.8, "z": 0 },
+          "normal": { "x": 0, "y": 1, "z": 0 },
+          "size": 0.5,
+          "type": "top"
+        },
+        {
+          "id": "bottom",
+          "position": { "x": 0, "y": -0.8, "z": 0 },
+          "normal": { "x": 0, "y": -1, "z": 0 },
+          "size": 1.25,
+          "type": "bottom"
+        }
+      ],
+      "modules": [
+        {
+          "type": "battery",
+          "isActive": true,
+          "canToggle": false,
+          "powerStorage": 50
+        }
+      ],
+      "dragCoefficient": 0.2,
+      "crashTolerance": 14,
+      "maxTemperature": 2400,
+      "heatShielding": 50,
+      "proceduralConfig": {
+        "type": "command-pod",
+        "size": "small",
+        "material": "metal",
+        "style": "capsule",
+        "hasWindows": true,
+        "hasAntenna": false,
+        "customParameters": {
+          "windowCount": 3
+        }
+      }
+    },
+    {
+      "id": "mk1-probe-core",
+      "name": "Mk1 Probe Core",
+      "description": "A basic unmanned probe core for automated missions",
+      "manufacturer": "Probodobodyne",
+      "category": "command",
+      "mass": 50,
+      "cost": 400,
+      "crewCapacity": 0,
+      "hasIVA": false,
+      "electricityStorage": 10,
+      "torqueStrength": { "x": 3, "y": 3, "z": 3 },
+      "position": { "x": 0, "y": 0, "z": 0 },
+      "rotation": { "x": 0, "y": 0, "z": 0, "w": 1 },
+      "attachPoints": [
+        {
+          "id": "bottom",
+          "position": { "x": 0, "y": -0.15, "z": 0 },
+          "normal": { "x": 0, "y": -1, "z": 0 },
+          "size": 0.625,
+          "type": "bottom"
+        }
+      ],
+      "modules": [
+        {
+          "type": "battery",
+          "isActive": true,
+          "canToggle": false,
+          "powerStorage": 10
+        }
+      ],
+      "dragCoefficient": 0.15,
+      "crashTolerance": 12,
+      "maxTemperature": 1200,
+      "proceduralConfig": {
+        "type": "probe-core",
+        "size": "small",
+        "material": "metal",
+        "hasWindows": false,
+        "hasAntenna": true,
+        "customParameters": {
+          "antennaType": "rod"
+        }
+      }
+    },
+    {
+      "id": "fl-t400-fuel-tank",
+      "name": "FL-T400 Fuel Tank",
+      "description": "A medium-capacity liquid fuel tank",
+      "manufacturer": "Rockomax",
+      "category": "fuel",
+      "mass": 250,
+      "cost": 500,
+      "position": { "x": 0, "y": 0, "z": 0 },
+      "rotation": { "x": 0, "y": 0, "z": 0, "w": 1 },
+      "attachPoints": [
+        {
+          "id": "top",
+          "position": { "x": 0, "y": 0.9, "z": 0 },
+          "normal": { "x": 0, "y": 1, "z": 0 },
+          "size": 1.25,
+          "type": "top"
+        },
+        {
+          "id": "bottom",
+          "position": { "x": 0, "y": -0.9, "z": 0 },
+          "normal": { "x": 0, "y": -1, "z": 0 },
+          "size": 1.25,
+          "type": "bottom"
+        }
+      ],
+      "resources": [
+        {
+          "resourceType": "liquidFuel",
+          "amount": 180,
+          "maxAmount": 180
+        },
+        {
+          "resourceType": "oxidizer",
+          "amount": 220,
+          "maxAmount": 220
+        }
+      ],
+      "modules": [],
+      "dragCoefficient": 0.3,
+      "crashTolerance": 6,
+      "maxTemperature": 2000,
+      "proceduralConfig": {
+        "type": "fuel-tank",
+        "size": "medium",
+        "material": "metal",
+        "tankType": "liquid",
+        "aspectRatio": 1.5,
+        "customParameters": {
+          "hasInsulation": false,
+          "hasFuelLines": true,
+          "markerStyle": "stripes"
+        }
+      }
+    },
+    {
+      "id": "fl-t800-fuel-tank",
+      "name": "FL-T800 Fuel Tank",
+      "description": "A large-capacity liquid fuel tank",
+      "manufacturer": "Rockomax",
+      "category": "fuel",
+      "mass": 500,
+      "cost": 800,
+      "position": { "x": 0, "y": 0, "z": 0 },
+      "rotation": { "x": 0, "y": 0, "z": 0, "w": 1 },
+      "attachPoints": [
+        {
+          "id": "top",
+          "position": { "x": 0, "y": 1.8, "z": 0 },
+          "normal": { "x": 0, "y": 1, "z": 0 },
+          "size": 1.25,
+          "type": "top"
+        },
+        {
+          "id": "bottom",
+          "position": { "x": 0, "y": -1.8, "z": 0 },
+          "normal": { "x": 0, "y": -1, "z": 0 },
+          "size": 1.25,
+          "type": "bottom"
+        }
+      ],
+      "resources": [
+        {
+          "resourceType": "liquidFuel",
+          "amount": 360,
+          "maxAmount": 360
+        },
+        {
+          "resourceType": "oxidizer",
+          "amount": 440,
+          "maxAmount": 440
+        }
+      ],
+      "modules": [],
+      "dragCoefficient": 0.3,
+      "crashTolerance": 6,
+      "maxTemperature": 2000,
+      "proceduralConfig": {
+        "type": "fuel-tank",
+        "size": "large",
+        "material": "metal",
+        "tankType": "liquid",
+        "aspectRatio": 3.0,
+        "customParameters": {
+          "hasInsulation": false,
+          "hasFuelLines": true,
+          "markerStyle": "stripes"
+        }
+      }
+    },
+    {
+      "id": "lv-t30-engine",
+      "name": "LV-T30 Liquid Fuel Engine",
+      "description": "A reliable liquid-fueled rocket engine",
+      "manufacturer": "Rockomax",
+      "category": "propulsion",
+      "mass": 1250,
+      "cost": 1100,
+      "gimbalRange": 0.5,
+      "alternatorPower": 12,
+      "position": { "x": 0, "y": 0, "z": 0 },
+      "rotation": { "x": 0, "y": 0, "z": 0, "w": 1 },
+      "attachPoints": [
+        {
+          "id": "top",
+          "position": { "x": 0, "y": 0.6, "z": 0 },
+          "normal": { "x": 0, "y": 1, "z": 0 },
+          "size": 1.25,
+          "type": "top"
+        }
+      ],
+      "modules": [
+        {
+          "type": "engine",
+          "isActive": false,
+          "canToggle": true,
+          "thrust": 215000,
+          "specificImpulse": 320,
+          "throttleable": true,
+          "currentThrottle": 0,
+          "fuelConsumption": [
+            {
+              "resourceType": "liquidFuel",
+              "rate": 9.0
+            },
+            {
+              "resourceType": "oxidizer",
+              "rate": 11.0
+            }
+          ]
+        },
+        {
+          "type": "generator",
+          "isActive": true,
+          "canToggle": false,
+          "powerGeneration": 12
+        }
+      ],
+      "dragCoefficient": 0.2,
+      "crashTolerance": 7,
+      "maxTemperature": 2000,
+      "proceduralConfig": {
+        "type": "engine",
+        "size": "medium",
+        "material": "metal",
+        "engineType": "liquid",
+        "nozzleStyle": "bell",
+        "customParameters": {
+          "bellLength": 1.2,
+          "hasGimbal": true,
+          "hasTurbopump": true,
+          "exhaustColor": "#FFB84D"
+        }
+      }
+    },
+    {
+      "id": "lv-t45-engine",
+      "name": "LV-T45 Liquid Fuel Engine",
+      "description": "A powerful liquid-fueled rocket engine with thrust vectoring",
+      "manufacturer": "Rockomax",
+      "category": "propulsion",
+      "mass": 1500,
+      "cost": 1200,
+      "gimbalRange": 1.0,
+      "alternatorPower": 15,
+      "position": { "x": 0, "y": 0, "z": 0 },
+      "rotation": { "x": 0, "y": 0, "z": 0, "w": 1 },
+      "attachPoints": [
+        {
+          "id": "top",
+          "position": { "x": 0, "y": 0.7, "z": 0 },
+          "normal": { "x": 0, "y": 1, "z": 0 },
+          "size": 1.25,
+          "type": "top"
+        }
+      ],
+      "modules": [
+        {
+          "type": "engine",
+          "isActive": false,
+          "canToggle": true,
+          "thrust": 200000,
+          "specificImpulse": 320,
+          "throttleable": true,
+          "currentThrottle": 0,
+          "fuelConsumption": [
+            {
+              "resourceType": "liquidFuel",
+              "rate": 8.5
+            },
+            {
+              "resourceType": "oxidizer",
+              "rate": 10.4
+            }
+          ]
+        },
+        {
+          "type": "generator",
+          "isActive": true,
+          "canToggle": false,
+          "powerGeneration": 15
+        }
+      ],
+      "dragCoefficient": 0.2,
+      "crashTolerance": 7,
+      "maxTemperature": 2000,
+      "proceduralConfig": {
+        "type": "engine",
+        "size": "medium",
+        "material": "metal",
+        "engineType": "liquid",
+        "nozzleStyle": "bell",
+        "customParameters": {
+          "bellLength": 1.4,
+          "hasGimbal": true,
+          "hasTurbopump": true,
+          "exhaustColor": "#FFB84D"
+        }
+      }
+    },
+    {
+      "id": "ix-6315-ion-engine",
+      "name": "IX-6315 Ion Engine",
+      "description": "A highly efficient but low-thrust ion engine",
+      "manufacturer": "PB-ION",
+      "category": "propulsion",
+      "mass": 250,
+      "cost": 8000,
+      "gimbalRange": 0,
+      "alternatorPower": 0,
+      "position": { "x": 0, "y": 0, "z": 0 },
+      "rotation": { "x": 0, "y": 0, "z": 0, "w": 1 },
+      "attachPoints": [
+        {
+          "id": "top",
+          "position": { "x": 0, "y": 0.3, "z": 0 },
+          "normal": { "x": 0, "y": 1, "z": 0 },
+          "size": 0.625,
+          "type": "top"
+        }
+      ],
+      "modules": [
+        {
+          "type": "engine",
+          "isActive": false,
+          "canToggle": true,
+          "thrust": 2000,
+          "specificImpulse": 4200,
+          "throttleable": true,
+          "currentThrottle": 0,
+          "fuelConsumption": [
+            {
+              "resourceType": "xenon",
+              "rate": 0.486
+            },
+            {
+              "resourceType": "electricity",
+              "rate": 8.74
+            }
+          ]
+        }
+      ],
+      "dragCoefficient": 0.1,
+      "crashTolerance": 8,
+      "maxTemperature": 2000,
+      "proceduralConfig": {
+        "type": "engine",
+        "size": "small",
+        "material": "metal",
+        "engineType": "ion",
+        "nozzleStyle": "grid",
+        "customParameters": {
+          "hasGimbal": false,
+          "hasTurbopump": false,
+          "exhaustColor": "#4D9FFF"
+        }
+      }
+    },
+    {
+      "id": "tt-38k-decoupler",
+      "name": "TT-38K Stack Decoupler",
+      "description": "A radial stack decoupler for separating stages",
+      "manufacturer": "O.M.B. Demolition Enterprises",
+      "category": "structural",
+      "mass": 50,
+      "cost": 400,
+      "position": { "x": 0, "y": 0, "z": 0 },
+      "rotation": { "x": 0, "y": 0, "z": 0, "w": 1 },
+      "attachPoints": [
+        {
+          "id": "top",
+          "position": { "x": 0, "y": 0.1, "z": 0 },
+          "normal": { "x": 0, "y": 1, "z": 0 },
+          "size": 1.25,
+          "type": "top"
+        },
+        {
+          "id": "bottom",
+          "position": { "x": 0, "y": -0.1, "z": 0 },
+          "normal": { "x": 0, "y": -1, "z": 0 },
+          "size": 1.25,
+          "type": "bottom"
+        }
+      ],
+      "modules": [
+        {
+          "type": "decoupler",
+          "isActive": false,
+          "canToggle": true,
+          "ejectionForce": 250,
+          "isDecoupled": false
+        }
+      ],
+      "dragCoefficient": 0.2,
+      "crashTolerance": 9,
+      "maxTemperature": 2000,
+      "proceduralConfig": {
+        "type": "structural",
+        "size": "medium",
+        "material": "metal",
+        "structuralType": "decoupler"
+      }
+    },
+    {
+      "id": "mk16-parachute",
+      "name": "Mk16 Parachute",
+      "description": "A basic parachute for safe landings",
+      "manufacturer": "RealChute",
+      "category": "utility",
+      "mass": 100,
+      "cost": 422,
+      "position": { "x": 0, "y": 0, "z": 0 },
+      "rotation": { "x": 0, "y": 0, "z": 0, "w": 1 },
+      "attachPoints": [
+        {
+          "id": "bottom",
+          "position": { "x": 0, "y": -0.2, "z": 0 },
+          "normal": { "x": 0, "y": -1, "z": 0 },
+          "size": 0.625,
+          "type": "bottom"
+        }
+      ],
+      "modules": [
+        {
+          "type": "parachute",
+          "isActive": false,
+          "canToggle": true,
+          "deployAltitude": 1000,
+          "fullyDeployedDrag": 500
+        }
+      ],
+      "dragCoefficient": 0.2,
+      "crashTolerance": 12,
+      "maxTemperature": 2500,
+      "proceduralConfig": {
+        "type": "structural",
+        "size": "small",
+        "material": "composite",
+        "structuralType": "nose-cone"
+      }
+    }
+  ]
+}

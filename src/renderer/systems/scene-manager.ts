@@ -7,8 +7,14 @@ import { SpaceUI } from '../components/space-ui.js';
 import { PhysicsWorld } from './physics-world.js';
 import { GravitySystem } from './gravity-system.js';
 import { AtmosphericPhysics } from './atmospheric-physics.js';
+import { VehicleManager } from './vehicle-manager.js';
+import { Vehicle } from './vehicle.js';
+import { PartPlacement } from './part-placement.js';
+import { PartsCatalogUI } from '../components/parts-catalog-ui.js';
+import { AssemblyControlsUI } from '../components/assembly-controls-ui.js';
+import { VehicleStatsUI } from '../components/vehicle-stats-ui.js';
 
-export type SceneType = 'main-menu' | 'main-game' | 'settings' | 'loading';
+export type SceneType = 'main-menu' | 'main-game' | 'settings' | 'loading' | 'assembly-editor';
 
 export interface Scene {
   name: SceneType;
@@ -30,12 +36,13 @@ export class SceneManager {
 
   public init(graphicsEngine: GraphicsEngine): void {
     this.graphicsEngine = graphicsEngine;
-    
+
     // Register scenes
     this.registerScene(new MainMenuScene());
     this.registerScene(new MainGameScene());
     this.registerScene(new SettingsScene());
     this.registerScene(new LoadingScene());
+    this.registerScene(new AssemblyEditorScene());
 
     // Load the main menu scene by default
     this.loadScene('main-menu');
@@ -293,5 +300,182 @@ class LoadingScene implements Scene {
   destroy(): void {
     // Clean up loading scene
     console.log('Loading scene destroyed');
+  }
+}
+
+class AssemblyEditorScene implements Scene {
+  name: SceneType = 'assembly-editor';
+
+  private vehicleManager: VehicleManager | null = null;
+  private currentVehicle: Vehicle | null = null;
+  private inputManager: InputManager | null = null;
+  private cameraController: CameraController | null = null;
+  private graphicsEngine: GraphicsEngine | null = null;
+
+  // UI components
+  private partsCatalogUI: PartsCatalogUI | null = null;
+  private assemblyControlsUI: AssemblyControlsUI | null = null;
+  private vehicleStatsUI: VehicleStatsUI | null = null;
+
+  // Part placement
+  private partPlacement: PartPlacement | null = null;
+
+  // Grid helper for construction
+  private gridHelper: THREE.GridHelper | null = null;
+
+  init(graphicsEngine: GraphicsEngine): void {
+    console.log('Assembly editor scene initialized');
+    this.graphicsEngine = graphicsEngine;
+
+    // Create input manager
+    this.inputManager = new InputManager();
+    this.inputManager.init();
+
+    // Create vehicle manager
+    this.vehicleManager = new VehicleManager();
+
+    // Load parts library
+    this.vehicleManager.loadPartsLibrary('/src/data/parts-config.json').then(() => {
+      console.log('Parts library loaded');
+
+      // Create a new vehicle or load existing
+      this.currentVehicle = this.vehicleManager!.createVehicle('New Rocket');
+      this.vehicleManager!.setCurrentVehicle(this.currentVehicle);
+
+      // Add vehicle group to scene
+      if (this.currentVehicle) {
+        graphicsEngine.getScene().add(this.currentVehicle.group);
+      }
+    }).catch(error => {
+      console.error('Failed to load parts library:', error);
+    });
+
+    // Create camera controller (different setup than flight camera)
+    const camera = graphicsEngine.getCamera();
+    camera.position.set(10, 10, 10);
+    camera.lookAt(0, 0, 0);
+
+    this.cameraController = new CameraController(
+      camera,
+      this.inputManager,
+      graphicsEngine.getRenderer().domElement
+    );
+
+    // Create construction grid
+    this.gridHelper = new THREE.GridHelper(50, 50, 0x444444, 0x222222);
+    graphicsEngine.getScene().add(this.gridHelper);
+
+    // Add some lighting optimized for the editor
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+    graphicsEngine.getScene().add(ambientLight);
+
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    directionalLight.position.set(5, 10, 7);
+    graphicsEngine.getScene().add(directionalLight);
+
+    // Initialize part placement system
+    this.partPlacement = new PartPlacement(
+      this.vehicleManager,
+      this.currentVehicle!,
+      this.inputManager,
+      camera,
+      graphicsEngine.getRenderer().domElement
+    );
+
+    // Initialize UI components
+    this.partsCatalogUI = new PartsCatalogUI(this.vehicleManager, this.partPlacement);
+    this.assemblyControlsUI = new AssemblyControlsUI(
+      this.currentVehicle,
+      this.partPlacement,
+      this.inputManager
+    );
+    this.vehicleStatsUI = new VehicleStatsUI(this.currentVehicle);
+  }
+
+  update(deltaTime: number): void {
+    // Update input manager
+    if (this.inputManager) {
+      this.inputManager.update();
+    }
+
+    // Update camera controller
+    if (this.cameraController) {
+      this.cameraController.update(deltaTime);
+    }
+
+    // Update current vehicle
+    if (this.currentVehicle) {
+      this.currentVehicle.update(deltaTime);
+    }
+
+    // Update UI components
+    if (this.partsCatalogUI) this.partsCatalogUI.update();
+    if (this.assemblyControlsUI) this.assemblyControlsUI.update();
+    if (this.vehicleStatsUI) this.vehicleStatsUI.update();
+
+    // Update part placement
+    if (this.partPlacement) this.partPlacement.update();
+
+    // Check for launch command (L key)
+    if (this.inputManager?.isKeyPressed('KeyL') && this.currentVehicle) {
+      console.log('Launching vehicle...');
+      // TODO: Transition to flight scene with this vehicle
+    }
+
+    // Check for save command (Ctrl+S)
+    if (this.inputManager?.isKeyPressed('KeyS') &&
+        (this.inputManager?.isKeyPressed('ControlLeft') || this.inputManager?.isKeyPressed('ControlRight'))) {
+      if (this.currentVehicle && this.vehicleManager) {
+        this.vehicleManager.saveVehicle(this.currentVehicle);
+      }
+    }
+  }
+
+  destroy(): void {
+    console.log('Assembly editor scene destroyed');
+
+    // Clean up vehicle
+    if (this.currentVehicle && this.graphicsEngine) {
+      this.graphicsEngine.getScene().remove(this.currentVehicle.group);
+    }
+
+    // Clean up grid
+    if (this.gridHelper && this.graphicsEngine) {
+      this.graphicsEngine.getScene().remove(this.gridHelper);
+      this.gridHelper = null;
+    }
+
+    // Dispose vehicle manager
+    if (this.vehicleManager) {
+      this.vehicleManager.dispose();
+      this.vehicleManager = null;
+    }
+
+    // Dispose UI components
+    if (this.partsCatalogUI) {
+      this.partsCatalogUI.dispose();
+      this.partsCatalogUI = null;
+    }
+
+    if (this.assemblyControlsUI) {
+      this.assemblyControlsUI.dispose();
+      this.assemblyControlsUI = null;
+    }
+
+    if (this.vehicleStatsUI) {
+      this.vehicleStatsUI.dispose();
+      this.vehicleStatsUI = null;
+    }
+
+    // Dispose part placement
+    if (this.partPlacement) {
+      this.partPlacement.dispose();
+      this.partPlacement = null;
+    }
+
+    // Clean up other managers
+    this.cameraController = null;
+    this.inputManager = null;
+    this.currentVehicle = null;
   }
 }
